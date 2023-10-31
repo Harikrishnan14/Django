@@ -1,16 +1,27 @@
 .container {
     margin-top: 5%;
-    background-color: aquamarine;
 }
+
 .contents {
-    margin-top: 0px;
-    background-color: red;
+    margin-top: 50px;
+    position: sticky;
+    padding: 20px;
+    top: 125px;
 }
+
 .contents ul li {
     text-decoration: none;
     list-style: none;
     margin-bottom: 35px;
 }
+
 .contents ul li a {
+    text-decoration: none;
+}
+
+.card {
+    background-color: #F5F5F5 ;
+}
+a {
     text-decoration: none;
 }
