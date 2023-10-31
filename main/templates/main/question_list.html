@@ -65,7 +65,11 @@
             <div class="card-body">
               
                 <div class="form-floating mb-3">
-                  <a href="#"><input type="email" class="form-control" id="floatingInput" placeholder="What do you want to ask or share?"></a>
+                  {% if user.is_authenticated %}
+                  <a href="{% url 'questionCreate' %}"><input type="email" class="form-control" id="floatingInput" placeholder="What do you want to ask or share?"></a>
+                  {% else %}
+                  <a href="{% url 'login' %}"><input type="email" class="form-control" id="floatingInput" placeholder="What do you want to ask or share?"></a>
+                  {% endif %}
                 </div>
             </div>
           </div>
@@ -76,15 +80,14 @@
               Asked By <strong>{{ question.user }}</strong>
             </div>
             <div class="card-body">
-              <h5 class="card-title">{{ question.title }}</h5>
+              <a href="{% url 'questionDetail' question.id %}"><h5 class="card-title">{{ question.title }}</h5></a>
               {% if question.content|wordcount <= 40 %} <p class="card-text text-muted">{{ question.content}}</p>
                 {% else %}
                 <p class="card-text text-muted">{{ question.content|truncatewords:40|safe }}<a class="text-primary"
-                    href="">(more)</a></p>
+                    href="{% url 'questionDetail' question.id %}">(more)</a></p>
                 {% endif %}
                 <a href="#" class="btn btn-primary"><i class="fa-regular fa-thumbs-up"></i></a>
-                <a href="#" class="btn btn-primary"><i class="fa-regular fa-thumbs-down"></i></a>
-                <a href="#" class="btn btn-primary">Reply</a>
+                <a href="#" class="btn btn-danger"><i class="fa-regular fa-thumbs-down"></i></a>
             </div>
             <div class="card-footer text-body-secondary">
               {{ question.date_created|date:" j F, Y" }}
