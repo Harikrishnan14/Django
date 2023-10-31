@@ -55,8 +55,8 @@
                 <p class="card-text">{{ question.content }}</p>
                 <a href="{% url 'questionList' %}" class="btn btn-secondary"><i class="fa-solid fa-arrow-left"></i></a>
                 <a href="#" class="btn btn-primary">Answer Question</a>
-                <a href="#" class="btn btn-success"><i class="fa-regular fa-pen-to-square"></i></a>
-                <a href="#" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
+                <a href="{% url 'questionUpdate' question.id %}" class="btn btn-success"><i class="fa-regular fa-pen-to-square"></i></a>
+                <a href="{% url 'questionDelete' question.id %}" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
             </div>
             <div class="card-footer text-body-secondary">
                 {{ question.date_created }}
