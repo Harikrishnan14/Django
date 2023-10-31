@@ -1,0 +1,16 @@
+.container {
+    margin-top: 5%;
+    background-color: aquamarine;
+}
+.contents {
+    margin-top: 0px;
+    background-color: red;
+}
+.contents ul li {
+    text-decoration: none;
+    list-style: none;
+    margin-bottom: 35px;
+}
+.contents ul li a {
+    text-decoration: none;
+}
