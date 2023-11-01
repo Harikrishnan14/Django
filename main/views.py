@@ -1,3 +1,4 @@
+from typing import Any
 from django.db import models
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
@@ -17,6 +18,15 @@ class QuestionListView(ListView):
     model = Question
     context_object_name = 'questions'
     ordering = ['-date_created']
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        search = self.request.GET.get('search') or ""
+        if search:
+            context['questions'] = context['questions'].filter(title__icontains = search)
+            context['search'] = search
+
+        return context
 
 class QuestionDetailView(DetailView):
     model = Question
