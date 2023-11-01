@@ -9,12 +9,16 @@ class Question(models.Model):
     title = models.CharField(max_length=10000)
     content = models.TextField(null=True, blank=True)
     date_created = models.DateTimeField(default=timezone.now)
+    likes = models.ManyToManyField(User, related_name='likeCount')
 
     def __str__(self):
         return f'{self.user.username} - Question'
     
     def get_absolute_url(self):
         return reverse("questionDetail", kwargs={"pk": self.pk})
+    
+    def total_likes(self):
+        return self.likes.count()
     
 
 class Comment(models.Model):

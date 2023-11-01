@@ -131,6 +131,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
-LOGIN_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = '/questions'
 
 LOGIN_URL = 'login'
